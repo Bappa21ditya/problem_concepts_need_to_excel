@@ -1,0 +1,17 @@
+https://www.geeksforgeeks.org/prefix-sum-2d-array/
+
+psa[3][3] = psa[2][3] + psa[3][2] -
+            psa[2][2] + a[3][3]
+          = 6 + 6 - 4 + 1
+          = 9
+The general formula: 
+psa[i][j] = psa[i-1][j] + psa[i][j-1] - 
+            psa[i-1][j-1] + a[i][j]
+
+Corner Cases (First row and first column)
+If i = 0 and j = 0
+   psa[i][j] = a[i][j]
+If i = 0 and j > 0
+   psa[i][j] = psa[i][j-1] + a[i][j]
+If i > 0 and j = 0
+   psa[i][j] = psa[i-1][j] + a[i][j]
