@@ -1,0 +1,83 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	string s="ababcbacadefegdehijhklij";
+	
+// 	vector<int>res;
+//         res.push_back(1);
+        map<char, pair<int,int>  >mp;
+        // map<string,pair<int,int>>mp;
+        map<char,int>mp1;
+        map<char,int>mp2;
+        
+        int c1[26]={0};
+        int c2[26]={0};
+        
+        for(int i=0;i<s.size();i++)
+        {
+           if(mp1.find(s[i])==mp1.end())
+               mp1[s[i]]=i;
+               
+          if(c1[s[i]-'a']==0)
+             c1[s[i]-'a']=i;
+        }
+        
+        
+    //   for (auto x : mp1)
+    //   cout << x.first << " " << x.second << endl;
+        
+        // for(int i=0;i<26;i++)
+        // {
+        //     cout<<c1[i]<<" ";
+        // }
+        for(int i=0;i<s.size();i++)
+        {
+            //   mp2.insert({s[i],i});
+            mp2[s[i]]=i;
+            
+             c2[s[i]-'a']=i;
+        }
+        
+    //      for (auto x : mp2)
+    //   cout << x.first << " " << x.second << endl;
+      
+    //   for(int i=0;i<26;i++)
+    //     {
+    //         cout<<c2[i]<<" ";
+    //     }
+     vector<pair<int,int>>v1;
+     vector<vector<int>>intervals;
+    //   for(auto i=mp1.begin();i!=mp1.end();i++)
+    //   {
+    //       int x=mp1->second;
+    //       int y=mp2.second;
+    //       v1.push_back({x,y});
+    //   }
+    
+    
+    for(int i=0;i<s.size();i++)
+    {
+        if(c1[s[i]-'a']!=0)
+          {
+              int x=c1[s[i]-'a'];
+              int y=c2[s[i]-'a'];
+              vector<int>p1;
+              p1.push_back(x);
+              p1.push_back(y);
+              intervals.push_back(p1);
+              
+              
+          }
+    }
+    for(int i=0;i<intervals.size();i++)
+    {
+        for(int j=0;j<intervals[i].size();j++)
+        {
+            cout<<intervals[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+	
+	return 0;
+}
